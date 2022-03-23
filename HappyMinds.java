@@ -19,8 +19,11 @@ class HappyMinds {
             {
                 /* This is to check if player's last 2 turn was 1 */
                 if (successfulTurnLog.get(successfulTurnLog.size() - 1) == 1
-                        && successfulTurnLog.get(successfulTurnLog.size() - 2) == 1)
+                        && successfulTurnLog.get(successfulTurnLog.size() - 2) == 1) {
+                    System.out.println("You have 1 as your two previous turns.. Sorry you miss this turn");
+                    successfulTurnLog.add(0); // Logging an empty turn.
                     return false;
+                }
 
             }
             return true;
@@ -140,9 +143,10 @@ class HappyMinds {
             System.out.println(
                     player.returnName() + " got " + turnValue + ", remaining target is:" + player.returnTargetLeft());
             game.checkScore(player);
-        } else
+        } else {
+            System.out.println("Turn uregistered, This value is greater that your points left");
             return;
-
+        }
         if (turnValue == 6 && player.returnTargetLeft() != 0) {
             System.out.println("You got 6... play another turn.\n");
             makeAPlayingTurn(player, game, sc);
@@ -246,7 +250,9 @@ class HappyMinds {
 
                 for (Players player : players) {
                     System.out
-                            .println(player.returnName() + " .... " + player.returnTargetLeft() + " ....  ");
+                            .println(player.returnName() + " .... " + player.returnTargetLeft() + " ....  "
+                                    + (player.returnRank() == Integer.MAX_VALUE ? " Still in-game"
+                                            : player.returnRank()));
                 }
                 System.out.println("\n");
 
