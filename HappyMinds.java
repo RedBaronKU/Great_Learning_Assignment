@@ -105,6 +105,8 @@ class HappyMinds {
         public void checkScore(Players player) {
             if (player.returnTargetLeft() == 0) {
                 appendPlayerToWinnerList(player);
+                System.out.println(
+                        "You finished the Game, Congrats, step back and relax, Rank is:" + player.returnRank());
             }
         }
 
